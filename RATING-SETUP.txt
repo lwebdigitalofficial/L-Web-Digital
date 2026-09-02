@@ -1,0 +1,31 @@
+L WEB DIGITAL — REAL RATING SYSTEM SETUP
+
+This version uses:
+- Vercel Serverless Function: /api/ratings.js
+- Supabase as the persistent database
+- No frontend database/service-role credentials
+- No fake ratings or fake review data
+
+1) Create a Supabase project.
+2) Open Supabase -> SQL Editor.
+3) Paste and run: supabase-schema.sql
+4) In Supabase Project Settings -> API, copy:
+   - Project URL
+   - service_role key (keep this SECRET; never put it in index.html/script.js)
+5) In Vercel -> Project -> Settings -> Environment Variables add:
+   SUPABASE_URL = your Supabase Project URL
+   SUPABASE_SERVICE_ROLE_KEY = your Supabase service_role key
+   RATING_IP_SALT = a long random secret string
+   Add them for Production (and Preview if you want to test previews).
+6) Redeploy the Vercel project.
+
+After deployment:
+- No ratings are shown until a real visitor submits one.
+- The average and total are calculated from the database.
+- Recent submitted ratings are shown on the website.
+- Refreshing the page keeps the ratings because they are stored in Supabase.
+- The optional name is shown as entered; if blank, it appears as Anonymous.
+- The API stores only a salted hash of the visitor IP for a simple daily anti-spam limit.
+- The service-role key stays server-side in Vercel.
+
+Note: this ZIP is backend-ready, but a database cannot be created inside a static ZIP alone. The Supabase project and Vercel environment variables must be configured once.

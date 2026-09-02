@@ -96,20 +96,56 @@
 </section>
 
 <section class="portfolio section" id="portfolio">
-  <div class="section-head">
-    <div><h2>Our <span>Work</span></h2><p>Selected digital experiences designed to look great and perform.</p></div>
+  <div class="section-head demo-projects-head">
+    <div>
+      <div class="kicker">DEMO PROJECTS</div>
+      <h2>Website concepts, <span>professionally presented.</span></h2>
+      <p>These are demonstration concepts created to show different styles and possibilities. They are not real client projects.</p>
+    </div>
   </div>
-  <div class="portfolio-grid">
-    <div class="project large"><div class="project-ui"><span>CREATIVE STUDIO</span><strong>Make your<br><b>brand matter.</b></strong></div></div>
-    <div class="project"><div class="project-ui"><span>E-COMMERCE</span><strong>Simple.<br><b>Bold. Shop.</b></strong></div></div>
-    <div class="project"><div class="project-ui"><span>BUSINESS</span><strong>Built to<br><b>grow.</b></strong></div></div>
+  <div class="portfolio-grid demo-projects-grid">
+    <article class="demo-project">
+      <div class="demo-project-preview">
+        <div class="demo-project-copy"><span>FOOD &amp; HOSPITALITY</span><strong>Restaurant</strong></div>
+        <img src="project-restaurant.png" alt="Restaurant website demo preview" loading="lazy">
+      </div>
+      <div class="demo-project-meta"><small>WEBSITE CONCEPT</small><b>Restaurant Website</b></div>
+    </article>
+    <article class="demo-project">
+      <div class="demo-project-preview">
+        <div class="demo-project-copy"><span>FASHION &amp; RETAIL</span><strong>Collection</strong></div>
+        <img src="project-fashion.png" alt="Fashion clothing website demo preview" loading="lazy">
+      </div>
+      <div class="demo-project-meta"><small>WEBSITE CONCEPT</small><b>Fashion / Clothing Website</b></div>
+    </article>
+    <article class="demo-project">
+      <div class="demo-project-preview project-business">
+        <div class="demo-project-copy"><span>BUSINESS</span><strong>Company</strong></div>
+        <img src="project-business.png" alt="Business corporate website demo preview" loading="lazy">
+      </div>
+      <div class="demo-project-meta"><small>WEBSITE CONCEPT</small><b>Business / Corporate Website</b></div>
+    </article>
+    <article class="demo-project">
+      <div class="demo-project-preview project-gaming">
+        <div class="demo-project-copy"><span>GAMING &amp; STREAMING</span><strong>Live</strong></div>
+        <img src="project-gaming.png" alt="Gaming streamer website demo preview" loading="lazy">
+      </div>
+      <div class="demo-project-meta"><small>WEBSITE CONCEPT</small><b>Gaming / Streamer Website</b></div>
+    </article>
+    <article class="demo-project demo-project-wide">
+      <div class="demo-project-preview project-personal">
+        <div class="demo-project-copy"><span>CREATIVE &amp; PERSONAL</span><strong>Portfolio</strong></div>
+        <img src="project-personal.png" alt="Personal portfolio website demo preview" loading="lazy">
+      </div>
+      <div class="demo-project-meta"><small>WEBSITE CONCEPT</small><b>Personal Portfolio Website</b></div>
+    </article>
   </div>
 </section>
 
 <section class="about section" id="about">
   <div><div class="kicker">ABOUT S WEB DIGITAL</div><h2>Digital presence<br>with <span>purpose.</span></h2></div>
   <div><p>We create modern websites and digital experiences for businesses that want to look professional, load fast and turn visitors into customers.</p>
-  <div class="stats"><div><b>120+</b><small>Projects</small></div><div><b>98%</b><small>Happy Clients</small></div><div><b>5+</b><small>Years Experience</small></div></div></div>
+  </div>
 </section>
 
 <section class="process section" id="process">
@@ -182,6 +218,42 @@
   </a></div>
 </aside>
 </div>
+
+<section class="real-rating section" id="rating">
+  <div class="section-head">
+    <div>
+      <div class="kicker">LIVE WEBSITE FEEDBACK</div>
+      <h2>See how visitors <span>engage.</span></h2>
+      <p>Anonymous visitor and rating information. No visitor names, email accounts or WhatsApp identities are exposed.</p>
+    </div>
+  </div>
+  <div class="feedback-metrics">
+    <div class="feedback-card"><span class="feedback-icon">◉</span><div><strong id="websiteViews">—</strong><small>Website Views</small></div></div>
+    <div class="feedback-card"><span class="feedback-icon">↗</span><div><strong id="portfolioViews">—</strong><small>Portfolio Views</small></div></div>
+    <div class="feedback-card"><span class="feedback-icon">★</span><div><strong id="siteRating">—</strong><small id="siteRatingMeta">Be the first to rate L Web Digital</small></div></div>
+  </div>
+  <div class="feedback-rate-row">
+    <div class="feedback-rate-copy"><strong>How would you rate our website?</strong><small>Your rating is anonymous. One rating per visitor per day is allowed.</small></div>
+    <form class="feedback-rate-form" id="ratingForm">
+      <div class="real-rating-input" role="radiogroup" aria-label="Rate our service from 1 to 5 stars">
+        <button type="button" data-rating="1" aria-label="1 star">★</button>
+        <button type="button" data-rating="2" aria-label="2 stars">★</button>
+        <button type="button" data-rating="3" aria-label="3 stars">★</button>
+        <button type="button" data-rating="4" aria-label="4 stars">★</button>
+        <button type="button" data-rating="5" aria-label="5 stars">★</button>
+      </div>
+      <input type="hidden" id="ratingValue" value="">
+      <input type="text" id="ratingName" value="" maxlength="80" tabindex="-1" autocomplete="off" aria-hidden="true" class="rating-hp">
+      <input type="text" id="ratingWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" class="rating-hp">
+      <button class="btn primary" type="submit" id="ratingSubmit">Submit Rating <b>↗</b></button>
+      <div class="rating-message" id="ratingMessage" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+  <div class="ratings-list-wrap" id="ratingsListWrap" hidden>
+    <div class="ratings-list-head"><h3>Recent ratings</h3><span id="ratingsCountLabel"></span></div>
+    <div class="ratings-list" id="ratingsList"></div>
+  </div>
+</section>
 </main>
 
 <footer>
