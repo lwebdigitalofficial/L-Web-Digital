@@ -37,8 +37,8 @@ footer{padding:28px 4.5%;border-top:1px solid #1d1922;background:#050507;display
 /* Side contact panel with platform icons */
 .floating-contact{
   position:relative;right:auto;top:auto;transform:none;z-index:2;
-  width:285px;margin:0 64px 0 auto;padding:14px 12px 12px;
-  background:rgba(10,8,15,.94);
+  width:min(1120px,calc(100% - 128px));margin:0 auto;
+  padding:14px 18px 16px;background:rgba(10,8,15,.94);
   border:1px solid #352843;border-radius:14px;
   box-shadow:0 18px 55px rgba(0,0,0,.35),0 0 35px rgba(150,70,255,.08);
   backdrop-filter:blur(12px);
@@ -47,14 +47,23 @@ footer{padding:28px 4.5%;border-top:1px solid #1d1922;background:#050507;display
   text-align:center;color:#c084ff;font-size:12px;letter-spacing:2px;
   font-weight:900;padding:5px 0 13px;border-bottom:1px solid #292131;
 }
-.contact-row{
-  display:flex;align-items:center;gap:12px;padding:11px 7px;
-  border-bottom:1px solid #292431;transition:.22s;
+.contact-grid-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  align-items:stretch;
 }
-.contact-row:last-child{border-bottom:0}
-.contact-row:hover{
+.contact-grid-row + .contact-grid-row{
+  border-top:1px solid #292431;
+}
+.contact-grid-row .contact-row{
+  display:flex;align-items:center;gap:12px;min-width:0;
+  padding:10px 16px;border-bottom:0;border-right:1px solid #292431;
+  transition:.22s;
+}
+.contact-grid-row .contact-row:last-child{border-right:0}
+.contact-grid-row .contact-row:hover{
   background:linear-gradient(90deg,rgba(160,75,255,.12),rgba(160,75,255,.02));
-  transform:translateX(-3px);
+  transform:translateY(-1px);
 }
 .contact-icon{
   width:39px;height:39px;min-width:39px;border-radius:9px;
@@ -64,65 +73,37 @@ footer{padding:28px 4.5%;border-top:1px solid #1d1922;background:#050507;display
   box-shadow:0 0 18px rgba(155,75,255,.12);
 }
 .contact-icon svg{width:22px;height:22px}
-.instagram-icon{color:#ff8cf5}
-.facebook-icon{color:#74a7ff}
-.linkedin-icon{color:#67b8ff}
-.whatsapp-icon{color:#72f39a}
+.instagram-icon{color:#ff8cf5}.facebook-icon{color:#74a7ff}
+.linkedin-icon{color:#67b8ff}.whatsapp-icon{color:#72f39a}
 .phone-icon,.email-icon{color:#c78aff}
 .contact-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
-.contact-copy strong{font-size:13px;color:#fff;font-weight:800}
+.contact-copy strong{font-size:13px;color:#fff;font-weight:800;white-space:nowrap}
 .contact-copy small{font-size:11px;color:#aaa3b3;word-break:break-word}
-.contact-row:hover .contact-icon{
+.contact-grid-row .contact-row:hover .contact-icon{
   border-color:#9b62d2;box-shadow:0 0 20px rgba(175,90,255,.25);
 }
 .contact-panel-bottom-wrap{
-  width:100%;
-  padding:55px 0 45px;
-  display:flex;
-  justify-content:flex-end;
-  clear:both;
+  width:100%;padding:55px 0 45px;
+  display:flex;justify-content:flex-start;clear:both;
+}
+@media(max-width:900px){
+  .floating-contact{width:calc(100% - 64px)}
+  .contact-grid-row .contact-row{padding:10px 9px;gap:9px}
+  .contact-icon{width:35px;height:35px;min-width:35px}
+  .contact-icon svg{width:20px;height:20px}
 }
 @media(max-width:700px){
-  .contact-panel-bottom-wrap{
-    padding:40px 16px 35px;
-    justify-content:center;
-  }
-  .floating-contact{
-    width:min(94vw,360px);margin:0 auto;padding:10px;
-    border:1px solid #352843;border-radius:14px;
-  }
-  .floating-label{padding-bottom:9px}
-  .contact-row{padding:8px 5px}
-  .contact-icon{width:34px;height:34px;min-width:34px}
-  .contact-icon svg{width:19px;height:19px}
-  .contact-copy strong{font-size:12px}
-  .contact-copy small{font-size:10px}
-}
-
-.contact-grid-row{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  align-items:center;
-}
-.contact-grid-row + .contact-grid-row{
-  border-top:1px solid #292431;
-}
-.contact-grid-row .contact-row{
-  min-width:0;
-  padding:9px 14px;
-  border-bottom:0;
-  border-right:1px solid #292431;
-}
-.contact-grid-row .contact-row:last-child{
-  border-right:0;
-}
-@media(max-width:800px){
-  .contact-grid-row{
-    grid-template-columns:repeat(3,1fr);
-  }
+  .contact-panel-bottom-wrap{padding:40px 16px 35px;justify-content:center}
+  .floating-contact{width:100%;margin:0;padding:10px}
+  .contact-grid-row .contact-row{padding:9px 7px;gap:7px}
+  .contact-copy strong{font-size:11px}
+  .contact-copy small{font-size:9px}
+  .contact-icon{width:32px;height:32px;min-width:32px}
+  .contact-icon svg{width:18px;height:18px}
 }
 @media(max-width:560px){
-  .contact-grid-row{
-    grid-template-columns:repeat(3,1fr);
-  }
+  .contact-grid-row{grid-template-columns:1fr}
+  .contact-grid-row + .contact-grid-row{border-top:0}
+  .contact-grid-row .contact-row{border-right:0;border-bottom:1px solid #292431}
+  .contact-grid-row .contact-row:last-child{border-bottom:1px solid #292431}
 }
