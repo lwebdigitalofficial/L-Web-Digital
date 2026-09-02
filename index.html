@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="S Web Digital — websites, designs and online solutions.">
+  <meta name="description" content="L Web Digital — websites, designs and online solutions.">
   <title>L Web Digital | Websites That Work</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 </head>
 <body>
 <header class="navbar">
-  <a class="brand" href="#home"><img src="logo.png" alt="S Web Digital"></a>
+  <a class="brand" href="#home"><img src="logo.png" alt="L Web Digital"></a>
   <nav id="nav">
     <a class="active" href="#home">Home</a>
     <a href="#services">Services <span>⌄</span></a>
@@ -122,7 +124,20 @@
 
 <section class="contact section" id="contact">
   <div><div class="kicker">LET'S WORK TOGETHER</div><h2>Have a project<br>in <span>mind?</span></h2><p>Tell us what you're building and we'll get back to you.</p></div>
-  <form id="contactForm"><input required placeholder="Your Name"><input required type="email" placeholder="Email Address"><input placeholder="Phone / WhatsApp"><textarea required rows="5" placeholder="Tell us about your project..."></textarea><button class="btn primary" type="submit">Send Inquiry ↗</button><div class="success" id="success">Thanks! Your inquiry has been received.</div></form>
+  <form id="contactForm" action="https://formsubmit.co/lwebdigitalofficial@gmail.com" method="POST">
+    <input required name="name" autocomplete="name" placeholder="Your Name">
+    <input required type="email" name="email" autocomplete="email" placeholder="Email Address">
+    <input name="phone" autocomplete="tel" placeholder="Phone / WhatsApp">
+    <textarea required name="message" rows="5" placeholder="Tell us about your project..."></textarea>
+    <input type="hidden" name="_subject" value="New Website Inquiry — L Web Digital">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_url" value="https://l-web-digital.vercel.app/">
+    <input type="hidden" name="_next" value="https://l-web-digital.vercel.app/?sent=1#contact">
+    <input type="hidden" name="_replyto" value="">
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+    <button class="btn primary" type="submit">Send Inquiry ↗</button>
+    <div class="success" id="success" role="status" aria-live="polite"></div>
+  </form>
 </section>
 
 
@@ -131,7 +146,7 @@
 
 <div class="contact-panel-bottom-wrap">
 <!-- Side contact panel -->
-<aside class="floating-contact" aria-label="Contact S Web Digital">
+<aside class="floating-contact" aria-label="Contact L Web Digital">
 <div class="floating-label">CONTACT US</div>
 <div class="contact-grid-row"><a class="contact-row" href="https://www.instagram.com/l.web.digital/" target="_blank" rel="noopener" title="Instagram">
     <span class="contact-icon instagram-icon" aria-hidden="true">
