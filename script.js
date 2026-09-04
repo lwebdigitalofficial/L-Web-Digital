@@ -153,28 +153,64 @@ if(ratingForm){
   loadRatings();
 }
 
-// Anonymous local view indicators (no identity is collected).
-(function setupViewIndicators(){
+// Real global view counters: stored in Supabase through /api/views.
+(function setupGlobalViews(){
   const websiteEl=document.getElementById('websiteViews');
   const portfolioEl=document.getElementById('portfolioViews');
-  try{
-    const viewed=localStorage.getItem('lwd_site_viewed');
-    const current=Number(localStorage.getItem('lwd_site_view_count')||0);
-    if(!viewed){ localStorage.setItem('lwd_site_viewed','1'); localStorage.setItem('lwd_site_view_count',String(current+1)); }
-    if(websiteEl) websiteEl.textContent=String(Number(localStorage.getItem('lwd_site_view_count')||1));
-    const portfolio=document.getElementById('portfolio');
-    const markPortfolio=()=>{
-      if(localStorage.getItem('lwd_portfolio_viewed')) return;
-      const n=Number(localStorage.getItem('lwd_portfolio_view_count')||0)+1;
-      localStorage.setItem('lwd_portfolio_viewed','1'); localStorage.setItem('lwd_portfolio_view_count',String(n));
-    };
-    if(portfolio){
-      const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){markPortfolio();observer.disconnect();}}, {threshold:.15});
-      observer.observe(portfolio);
+  let visitorId='';
+
+  try {
+    visitorId=localStorage.getItem('lwd_visitor_id')||'';
+    if(!visitorId){
+      visitorId=(crypto.randomUUID ? crypto.randomUUID() : 'v_'+Date.now()+'_'+Math.random().toString(36).slice(2));
+      localStorage.setItem('lwd_visitor_id',visitorId);
     }
-    if(portfolioEl) portfolioEl.textContent=String(Number(localStorage.getItem('lwd_portfolio_view_count')||0));
-  }catch{
-    if(websiteEl) websiteEl.textContent='—';
-    if(portfolioEl) portfolioEl.textContent='—';
+  } catch {
+    visitorId='v_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  }
+
+  function showViews(data){
+    if(websiteEl && Number.isFinite(Number(data?.websiteViews))) websiteEl.textContent=Number(data.websiteViews).toLocaleString();
+    if(portfolioEl && Number.isFinite(Number(data?.portfolioViews))) portfolioEl.textContent=Number(data.portfolioViews).toLocaleString();
+  }
+
+  async function getViews(){
+    try{
+      const response=await fetch('/api/views',{headers:{Accept:'application/json'},cache:'no-store'});
+      if(!response.ok) throw new Error();
+      showViews(await response.json());
+    }catch{
+      if(websiteEl) websiteEl.textContent='—';
+      if(portfolioEl) portfolioEl.textContent='—';
+    }
+  }
+
+  async function recordView(viewType){
+    try{
+      const response=await fetch('/api/views',{
+        method:'POST',
+        headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify({viewType,visitorId})
+      });
+      if(!response.ok) throw new Error();
+      showViews(await response.json());
+    }catch{
+      getViews();
+    }
+  }
+
+  recordView('website');
+
+  const portfolio=document.getElementById('portfolio');
+  if(portfolio){
+    let recorded=false;
+    const observer=new IntersectionObserver(entries=>{
+      if(!recorded && entries.some(e=>e.isIntersecting)){
+        recorded=true;
+        recordView('portfolio');
+        observer.disconnect();
+      }
+    },{threshold:.15});
+    observer.observe(portfolio);
   }
 })();
