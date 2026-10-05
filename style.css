@@ -14,7 +14,7 @@ nav a{font-size:15px;color:#c4c0ca;height:94px;display:flex;align-items:center;p
 nav a:hover,nav a.active{color:#fff}nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:26px;height:2px;background:var(--accent2)}
 nav span{margin-left:8px}.quote{background:#c89cff;color:#0d0910;font-weight:800;padding:15px 21px;border-radius:7px}.quote b{margin-left:13px}
 .hamburger{display:none;background:none;border:0;color:#fff;font-size:25px}
-.hero{min-height:603px;padding:57px 4.5% 45px;display:grid;grid-template-columns:45% 55%;position:relative;background:radial-gradient(circle at 84% 48%,rgba(130,55,255,.22),transparent 38%),#050507}
+.hero{min-height:603px;padding:57px 4.5% 45px;display:grid;grid-template-columns:45% 55%;position:relative;background:linear-gradient(rgba(5,5,7,.45),rgba(5,5,7,.65)),url("ChatGPT Image Oct 5, 2026, 10_18_15 AM.png") center/cover no-repeat}
 .hero-copy{z-index:2;padding-top:15px}.eyebrow,.kicker{display:inline-block;color:#bd8aff;letter-spacing:2px;font-size:11px;font-weight:700;background:#121019;border:1px solid #24202c;border-radius:6px;padding:9px 12px}
 h1{font-size:67px;line-height:1.08;letter-spacing:-3px;margin:31px 0 17px}h1 span,.section h2 span{background:linear-gradient(90deg,#a96cff,#df88ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-copy>p{max-width:560px;color:#b6b2bd;font-size:17px;line-height:1.65}
@@ -297,4 +297,5 @@ footer{padding:28px 4.5%;border-top:1px solid #1d1922;background:#050507;display
   .demo-project-preview > img{width:54%;height:135px;right:15px;top:38px}
   .demo-project-wide .demo-project-preview > img{right:15px;top:38px;width:72%;height:135px}
 }
+
 
